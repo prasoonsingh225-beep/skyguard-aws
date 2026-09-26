@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=1
 
 COPY requirements.txt .
 RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-COPY . .
+COPY dashboard.py .
 
-EXPOSE 8000
-CMD ["uvicorn", "serve:app", "--host", "0.0.0.0", "--port", "8000"]
+EXPOSE 8501
+CMD ["streamlit", "run", "dashboard.py", "--server.address", "0.0.0.0", "--server.port", "8501", "--server.headless", "true"]
