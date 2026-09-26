@@ -1,0 +1,19 @@
+AERO Guard is an intelligent real-time anomaly detection system for Automatic Weather Stations. It addresses SIH Problem Statement 26073 from the Ministry of Earth Sciences and India Meteorological Department.
+
+Automatic Weather Stations support forecasting, agriculture, aviation, disaster management, and climate monitoring. But faulty sensors, communication failures, calibration drift, power fluctuations, and harsh conditions can create misleading observations.
+
+AERO Guard monitors temperature, atmospheric pressure, and relative humidity together. It learns normal temporal and seasonal patterns with a multivariate LSTM autoencoder and detects unusual observations using reconstruction error.
+
+In this demonstration, we generate realistic AWS data and inject spikes, frozen values, sensor drift, and communication loss. The model is trained on the time series and learns a data-driven anomaly threshold.
+
+When a new observation arrives, the FastAPI service maintains a sliding window and returns an anomaly score, severity, confidence, and a probable root cause. Operators can see the result in the Streamlit dashboard.
+
+AERO Guard is explainable. Per-variable reconstruction error and lightweight diagnostic rules help distinguish spikes, frozen sensors, abrupt drift, and insufficient context. This makes alerts actionable for maintenance teams.
+
+The architecture is scalable. Stations can send observations to a central service, while a compact quantized TensorFlow Lite model can run near the sensor on an ESP32 or other edge device. Local checks reduce bandwidth and preserve timely alerts during network interruptions.
+
+We evaluate the system using injected anomalies and metrics including precision, recall, F1 score, false alarm rate, and detection latency. The same evaluation framework can be used with historical IMD data during field validation.
+
+AERO Guard turns raw AWS observations into trustworthy, explainable, and operationally useful information. It is a practical step toward a self-aware and self-healing weather observation network.
+
+Explore the prototype at github dot com slash prasoonsingh225 dash beep slash skyguard dash aws. AERO Guard: making weather observations trustworthy.
