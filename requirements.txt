@@ -8,6 +8,6 @@ python-multipart==0.0.9
 requests==2.32.3
 scikit-learn==1.5.2
 shap==0.46.0
-tensorflow==2.16.2
+tensorflow-cpu==2.16.2
 streamlit==1.38.0
 uvicorn==0.30.6
